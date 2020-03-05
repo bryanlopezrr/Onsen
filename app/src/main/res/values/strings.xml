@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Onsen</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">6yLoqqDiGYvnh7DcyR3MxuYbSbGYSgVyTfNHnhOf</string>
+    <string name="back4app_client_key">xRBuWnY6iouF4Zfc21EUkm8WyAdr7C8BxWdibk6y</string>
+
 </resources>
