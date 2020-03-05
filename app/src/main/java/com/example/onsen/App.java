@@ -20,7 +20,7 @@ public class App extends Application {
         );
 
         ParseInstallation.getCurrentInstallation().saveInBackground();
-
+        //testing to make sure the Parse Server has been installed properly
        // Toast.makeText(LoginActivity.this, "Parse worked", Toast.LENGTH_LONG).show();
 
     }
