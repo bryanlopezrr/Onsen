@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".SignUpActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:background="@drawable/ic_launcher_background"
             android:src="@mipmap/ic_launcher" />
         <!--I will have to change the default images to ours ^^-->
-            />
+        />
 
     </RelativeLayout>
 
@@ -31,6 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Name" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -48,25 +56,26 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
+        <EditText
+            android:id="@+id/editTextConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirm Password"
+            android:inputType="textPassword" />
+
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
+            android:text="Sign Up"
             android:textColor="@color/colorWhite"
-            android:text="Sign In"
-            android:onClick="login"/>
-
-        <TextView
-            android:id="@+id/textViewCreateAccount"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="30dp"
-            android:gravity="center"
-            android:onClick="signUp"
-            android:text="Dont have an account yet?" />
+            android:onClick="signUp"/>
 
     </LinearLayout>
 
-</LinearLayout>
+
+
+    </LinearLayout>
