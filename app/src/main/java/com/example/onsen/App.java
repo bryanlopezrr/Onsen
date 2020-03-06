@@ -8,6 +8,8 @@ import com.parse.ParseInstallation;
 
 public class App extends Application {
 
+
+    //This piece of code is responsible for setting up the Parse server
     @Override
     public void onCreate() {
         super.onCreate();

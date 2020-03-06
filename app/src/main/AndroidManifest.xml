@@ -33,6 +33,10 @@
 
 
         <activity android:name=".SignUpActivity"/>
+        <activity android:name=".ReminderActivity"/>
+        <activity android:name=".MonitorActivity"/>
+        <activity android:name=".MeditateActivity"/>
+        <activity android:name=".ReportsActivity"/>
 
 
     </application>

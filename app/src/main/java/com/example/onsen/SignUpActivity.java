@@ -1,5 +1,6 @@
 package com.example.onsen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -59,6 +60,9 @@ public class SignUpActivity extends AppCompatActivity {
                 public void done(ParseException e) {
                     if (e == null) {
                         Toast.makeText(SignUpActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent( SignUpActivity.this, ReportsActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
                         ParseUser.logOut();
                         Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
