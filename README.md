@@ -1,6 +1,5 @@
 
 <img src="app/src/main/res/drawable/name.png" class="center" width="300" height="80">
-![](app/src/main/res/drawable/name.png)
 
 Onsen will help its users improve their overall mental and physical well being. Our application will remind the user when it is getting close to their specified bedtime to help them keep them on schedule even during their busiest days. Onsen allows the user to choose from a selection of white noises that will play while they sleep to ensure a calm mind and a great night's sleep.
 
@@ -12,7 +11,7 @@ Onsen monitors the surrounding ambience to keep track of noise level and phone m
 
 ### User Stories
 
-#### REQUIRED (10pts)
+#### REQUIRED 
 - [x] Succesfully connect to backend server for login capabilities
 - [x] Implement transitioning between activities through a navigation bar
 - [ ] Add functionality to record sleep every night
@@ -20,7 +19,7 @@ Onsen monitors the surrounding ambience to keep track of noise level and phone m
 - [ ] Edit and update the user interface 
 
 ### App Walkthough GIF
-<img src="http://g.recordit.co/FAXRWKRyG1.gif" width=250> <img src="http://g.recordit.co/QqjxhR5yAf.gif" width=250>
+<img src="http://g.recordit.co/FAXRWKRyG1.gif" width=250>     <img src="http://g.recordit.co/QqjxhR5yAf.gif" width=250>
 
 ### Notes
 While working on part 2 of this app, I realized the value of version control and keeping track of your code base changes. I worked on a large portion of the project just to realize I had made a huge mistake and could no go back. I had to start the project from scratch. 
