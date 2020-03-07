@@ -1,5 +1,5 @@
 
-<img src="app/src/main/res/drawable/name.png" width="100" height="100" class="center">
+<img src="app/src/main/res/drawable/name.png" class="center" width="300" height="80">
 ![](app/src/main/res/drawable/name.png)
 
 Onsen will help its users improve their overall mental and physical well being. Our application will remind the user when it is getting close to their specified bedtime to help them keep them on schedule even during their busiest days. Onsen allows the user to choose from a selection of white noises that will play while they sleep to ensure a calm mind and a great night's sleep.
