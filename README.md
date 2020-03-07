@@ -4,7 +4,7 @@ Onsen will help its users improve their overall mental and physical well being. 
 
 Onsen monitors the surrounding ambience to keep track of noise level and phone movement during sleep hours, allowing the user to view a summary of that night’s sleep patterns. Onsen will also allow the user to view meditation videos so the user can maintain relaxation outside of sleep and hopefully bring their mind to a calm place during their daily lives.
 
-=======
+==========================================================================================
 
 ## Version 1.0
 
@@ -19,12 +19,10 @@ Onsen monitors the surrounding ambience to keep track of noise level and phone m
 
 ### App Walkthough GIF
 <img src="http://g.recordit.co/FAXRWKRyG1.gif" width=250>
-<br>
 <img src="http://g.recordit.co/QqjxhR5yAf.gif" width=250>
 <br>
 
 ### Notes
 while working on part 2 of this app, I realized the value of version control and keeping track of your code base changes. I worked on a large portion of the project just to realize I had made a huge mistake and could no go back. I had to start the project from scratch. That was probably my biggest challenge.
-questions I was able to push through and gain some valuable knowldege.
- 
+
 ---
