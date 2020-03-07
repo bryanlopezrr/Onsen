@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -45,14 +46,20 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseUser parseUser, ParseException e) {
                     if (parseUser != null) {
-                        Toast.makeText(LoginActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_LONG).show();
+
+                        Toast toast = Toast.makeText(LoginActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 1350);
+                        toast.show();
+
                         Intent intent = new Intent( LoginActivity.this, ReportsActivity.class);
                         startActivity(intent);
                         finish();
 
                     } else {
                         ParseUser.logOut();
-                        Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(LoginActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 1350);
+                        toast.show();
                     }
                 }
             });

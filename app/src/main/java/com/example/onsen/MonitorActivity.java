@@ -3,6 +3,7 @@ package com.example.onsen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -20,7 +21,9 @@ public class MonitorActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
-
+        Menu menu = bottomNavBar.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
 
         bottomNavBar.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
 

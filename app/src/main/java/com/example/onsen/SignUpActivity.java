@@ -3,6 +3,7 @@ package com.example.onsen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,13 +60,17 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseException e) {
                     if (e == null) {
-                        Toast.makeText(SignUpActivity.this, "Welcome!", Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(SignUpActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 1350);
+                        toast.show();
                         Intent intent = new Intent( SignUpActivity.this, ReportsActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
                         ParseUser.logOut();
-                        Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast toast = Toast.makeText(SignUpActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 1350);
+                        toast.show();
                     }
                 }
             });
