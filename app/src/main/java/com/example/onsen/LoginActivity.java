@@ -45,11 +45,11 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseUser parseUser, ParseException e) {
                     if (parseUser != null) {
+                        Toast.makeText(LoginActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent( LoginActivity.this, ReportsActivity.class);
                         startActivity(intent);
                         finish();
 
-//                        Toast.makeText(LoginActivity.this, "Sucessful Login - Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_LONG).show();
                     } else {
                         ParseUser.logOut();
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
