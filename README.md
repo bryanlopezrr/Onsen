@@ -19,7 +19,7 @@ Onsen monitors the surrounding ambience to keep track of noise level and phone m
 - [ ] Edit and update the user interface 
 
 ### App Walkthough GIF
-<img src="http://g.recordit.co/FAXRWKRyG1.gif" width=250>     <img src="http://g.recordit.co/QqjxhR5yAf.gif" width=250>
+<img src="http://g.recordit.co/4mWVm1j0kb.gif" width=250>     <img src="http://g.recordit.co/L2s8c4f2WU.gif" width=250>     <img src="http://g.recordit.co/p49YzLJbPx.gif" width=250>
 
 ### Notes
 While working on part 2 of this app, I realized the value of version control and keeping track of your code base changes. I worked on a large portion of the project just to realize I had made a huge mistake and could no go back. I had to start the project from scratch. 
