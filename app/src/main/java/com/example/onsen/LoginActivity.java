@@ -56,10 +56,10 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
 
                     } else {
+                        tPassword.setError("Invalid email or password");
+                        tEmail.setError( "Invalid email or password" );
                         ParseUser.logOut();
-                        Toast toast = Toast.makeText(LoginActivity.this, "Welcome back " + tEmail.getText().toString() + "!", Toast.LENGTH_SHORT);
-                        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 1350);
-                        toast.show();
+
                     }
                 }
             });

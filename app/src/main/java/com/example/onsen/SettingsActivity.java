@@ -2,8 +2,11 @@ package com.example.onsen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseUser;
 
 import java.util.Set;
 
@@ -20,7 +24,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
 
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
         Menu menu = bottomNavBar.getMenu();
@@ -64,6 +67,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         });
     }
+
+    public void logout(View view){
+//        Toast.makeText(getApplicationContext(), "Logouttttt", Toast.LENGTH_LONG).show();
+        ParseUser.logOut();
+        Intent intent = new Intent( SettingsActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
 
 }

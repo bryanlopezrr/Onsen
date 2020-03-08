@@ -8,40 +8,45 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="match_parent"
+
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="75dp"
-            android:background="@color/colorPrimary"
-            android:text="Mediate"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:textColor="@color/colorWhite"/>
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/meditate" />
+
+<!--            android:maxWidth="42dp"-->
+<!--            android:maxHeight="42dp"-->
+        <!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="75dp"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:text="Mediate"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textColor="@color/colorWhite"/>-->
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationBar"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            app:menu="@menu/nav_items"
+            android:layout_alignParentBottom="true"
             app:itemBackground="@color/colorPrimary"
             app:itemIconTint="@color/nav_item_colors"
-            app:itemTextColor="@color/nav_item_colors">
+            app:itemTextColor="@color/nav_item_colors"
+            app:menu="@menu/nav_items">
 
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
     </RelativeLayout>
-
-
-
-
 
 
 </LinearLayout>
