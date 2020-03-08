@@ -17,6 +17,7 @@ Onsen monitors the surrounding ambience to keep track of noise level and phone m
 - [ ] Add functionality to record sleep every night
 - [ ] Add ability to use third party source for soothing sounds
 - [ ] Edit and update the user interface 
+- [ ] Adding ability to remind about bedtime 
 
 ### App Walkthough GIF
 <img src="http://g.recordit.co/4mWVm1j0kb.gif" width=250>     <img src="http://g.recordit.co/L2s8c4f2WU.gif" width=250>     <img src="http://g.recordit.co/p49YzLJbPx.gif" width=250>
