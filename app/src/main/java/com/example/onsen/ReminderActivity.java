@@ -1,9 +1,17 @@
 package com.example.onsen;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.media.TimedText;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CalendarView;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
@@ -13,7 +21,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Calendar;
+
 public class ReminderActivity extends AppCompatActivity {
+
+    AlarmManager reminderManager;
+    TimePicker reminderTimePicker;
+    TextView isSet;
+    Calendar calendar;
+    PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +40,11 @@ public class ReminderActivity extends AppCompatActivity {
         Menu menu = bottomNavBar.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
+
+        reminderManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        reminderTimePicker = findViewById(R.id.timePickerAlarm);
+        isSet = findViewById(R.id.textViewisSet);
+        calendar = Calendar.getInstance();
 
         bottomNavBar.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
 
@@ -62,5 +83,47 @@ public class ReminderActivity extends AppCompatActivity {
 
         });
 
+
     }
+
+    public void setReminder(View view){
+
+        calendar.set(Calendar.HOUR_OF_DAY, reminderTimePicker.getHour());
+        calendar.set(Calendar.MINUTE, reminderTimePicker.getMinute());
+
+        int hour = reminderTimePicker.getHour();
+        int minute = reminderTimePicker.getMinute();
+
+        String sHour = String.valueOf(hour);
+        String sMinute = String.valueOf(minute);
+
+        isReminderSet("YEEEET" + sHour
+        + " " + sMinute);
+
+
+        Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
+        intent.putExtra("extrat", "reminder on");
+
+        pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),  0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        reminderManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+    }
+
+    public void turnOff(View view){
+        isReminderSet("NOPEEEEEE");
+
+        Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
+
+        intent.putExtra("extra", "reminder off");
+        reminderManager.cancel(pendingIntent);
+
+        sendBroadcast(intent);
+
+    }
+
+    private void isReminderSet(String isOn){
+        isSet.setText(isOn);
+    }
+
 }
