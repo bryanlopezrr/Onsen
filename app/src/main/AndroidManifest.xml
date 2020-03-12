@@ -31,7 +31,6 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
 
-
         <activity android:name=".SignUpActivity"/>
         <activity android:name=".ReminderActivity"/>
         <activity android:name=".MonitorActivity"/>
@@ -39,6 +38,10 @@
         <activity android:name=".ReportsActivity"/>
         <activity android:name=".SettingsActivity"/>
 
+        <receiver android:name=".ReminderLogic"/>
+        <service android:name=".RingtonePlayingService"
+            android:enabled="true">
+        </service>
 
     </application>
 
