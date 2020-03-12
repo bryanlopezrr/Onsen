@@ -53,8 +53,8 @@ public class SignUpActivity extends AppCompatActivity {
             tConfirmPassword.setError("Confirmed Password is required");
         }
         else if(!tPassword.getText().toString().equals(tConfirmPassword.getText().toString())) {
-            tPassword.setError("Dont match");
-            tConfirmPassword.setError("Dont match");
+            tPassword.setError("Don't match");
+            tConfirmPassword.setError("Don't match");
         }
         else{
             ParseUser user = new ParseUser();

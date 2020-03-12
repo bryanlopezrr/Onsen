@@ -29,7 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view){
-
+        Intent intent = new Intent( LoginActivity.this, ReportsActivity.class);
+        startActivity(intent);
         if( TextUtils.isEmpty(tPassword.getText()) &&  TextUtils.isEmpty(tEmail.getText())) {
             tEmail.setError( "Email is required" );
             tPassword.setError("Password is required");
