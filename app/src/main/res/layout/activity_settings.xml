@@ -13,7 +13,8 @@
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/settings" />
+            android:src="@drawable/settings"
+            android:id="@+id/settingsHeader"/>
 <!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="75dp"-->
@@ -28,21 +29,63 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonProfile"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/settingsHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="105dp"
+            android:background="#BABBB4B4"
+            android:text="Profile"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonScreenS"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/buttonProfile"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#BABBB4B4"
+            android:text="ScreenSaver"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonInvite"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/buttonScreenS"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#BABBB4B4"
+            android:text="Invite Friends"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/buttonFeedback"
+            android:layout_width="340dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/buttonInvite"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#BABBB4B4"
+            android:onClick="email"
+            android:text="Feedback"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigationBar"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            app:menu="@menu/nav_items"
-            app:itemBackground="@color/colorPrimary"
-            app:itemIconTint="@color/nav_item_colors"
-            app:itemTextColor="@color/nav_item_colors">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         <Button
             android:id="@+id/buttonLogOut"
@@ -57,11 +100,20 @@
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            app:menu="@menu/nav_items"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@color/nav_item_colors"
+            app:itemTextColor="@color/nav_item_colors">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
     </RelativeLayout>
-
-
-
-
 
 </LinearLayout>

@@ -77,5 +77,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
+    public void email(View view){
+            String corpEmail = "feedback@onsen.com";
+            Intent intent = new Intent(Intent.ACTION_SEND);
+
+            intent.putExtra(Intent.EXTRA_EMAIL, corpEmail);
+            intent.setType("message/rfc822");
+            startActivity(Intent.createChooser(intent, "Choose email service"));
+    }
 
 }
