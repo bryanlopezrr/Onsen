@@ -37,6 +37,7 @@
         <activity android:name=".MeditateActivity"/>
         <activity android:name=".ReportsActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".ProfileActivity"/>
 
         <receiver android:name=".ReminderLogic"/>
         <service android:name=".RingtonePlayingService"

@@ -1,6 +1,7 @@
 package com.example.onsen;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
+import java.net.URI;
 import java.util.Set;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -76,6 +78,12 @@ public class SettingsActivity extends AppCompatActivity {
         finish();
     }
 
+    public  void profile(View view){
+        Intent intent = new Intent(SettingsActivity.this, ProfileActivity.class);
+        startActivity(intent);
+
+    }
+
 
     public void email(View view){
             String corpEmail = "feedback@onsen.com";
@@ -86,4 +94,10 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, "Choose email service"));
     }
 
+
+    public void inviteFriends(View view){
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            startActivity(Intent.createChooser(intent, "Share using: "));
+    }
 }

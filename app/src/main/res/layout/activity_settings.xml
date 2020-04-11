@@ -40,6 +40,7 @@
             android:layout_marginTop="105dp"
             android:background="#BABBB4B4"
             android:text="Profile"
+            android:onClick="profile"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
@@ -63,6 +64,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="#BABBB4B4"
+            android:onClick="inviteFriends"
             android:text="Invite Friends"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
