@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,19 +23,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static java.lang.Math.abs;
+
 public class MonitorActivity extends AppCompatActivity {
     //https://www.youtube.com/watch?v=8Veyw4e1MX0
 
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroscopeEventListener;
-
+    float motionsDetected = 0;
+    float motionsToParse = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitor);
         final TextView textView = findViewById(R.id.textView2);
+        final ToggleButton toggleButton = findViewById(R.id.toggleButton);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -41,16 +47,27 @@ public class MonitorActivity extends AppCompatActivity {
             Toast.makeText(this, "Error: no gyroscope", Toast.LENGTH_SHORT).show();
             finish();
         }
-
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    motionsDetected = 0;
+                }
+                else {
+                    motionsToParse = motionsDetected;
+                    motionsDetected = 0;
+                }
+            }
+        });
         gyroscopeEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                if (event.values[2] > 0.2f || event.values[1] > 0.2f || event.values[0] > 0.2f) {
-                    textView.setText(R.string.motion_detected);
+                //if the average amount of motion is above a certain threshold it is noted
+                if ((abs(event.values[2]) + abs(event.values[1]) + abs(event.values[0]) / 3) > 0.7f) {
+                    motionsDetected++;
                 }
-                else {
-                    textView.setText(R.string.no_motion);
-                }
+                textView.setText(Float.toString(motionsDetected));
+
             }
 
             @Override
@@ -58,6 +75,8 @@ public class MonitorActivity extends AppCompatActivity {
 
             }
         };
+
+
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
         Menu menu = bottomNavBar.getMenu();
         MenuItem menuItem = menu.getItem(1);

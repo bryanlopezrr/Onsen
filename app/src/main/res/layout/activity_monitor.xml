@@ -51,12 +51,12 @@
             android:layout_height="wrap_content"
             android:text="@string/no_motion" />
 
-        <TextView
-            android:id="@+id/textView3"
+        <ToggleButton
+            android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/no_audio" />
+            android:text="ToggleButton" />
 
 
     </RelativeLayout>
