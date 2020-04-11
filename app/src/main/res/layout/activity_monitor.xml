@@ -7,71 +7,83 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="677dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/monitor" />
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="75dp"-->
-<!--            android:background="@color/colorPrimary"-->
-<!--            android:text="Monitor"-->
-<!--            android:gravity="center"-->
-<!--            android:textSize="30dp"-->
-<!--            android:textColor="@color/colorWhite"/>-->
 
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navigationBar"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            app:menu="@menu/nav_items"
-            app:itemBackground="@color/colorPrimary"
-            app:itemIconTint="@color/nav_item_colors"
-            app:itemTextColor="@color/nav_item_colors">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/toggleButton"
+            android:text="@string/motion_monitor"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_motion" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="ToggleButton" />
+            android:layout_alignBottom="@id/toggleButton2"
+            android:text="@string/noise_monitor"
+            android:textSize="30sp" />
 
         <ToggleButton
             android:id="@+id/toggleButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/toggleButton"
+            android:layout_alignParentLeft="false"
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_centerHorizontal="false"
+            android:layout_centerVertical="false"
             android:text="ToggleButton" />
 
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="ToggleButton" />
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="75dp"-->
+        <!--            android:background="@color/colorPrimary"-->
+        <!--            android:text="Monitor"-->
+        <!--            android:gravity="center"-->
+        <!--            android:textSize="30dp"-->
+        <!--            android:textColor="@color/colorWhite"/>-->
 
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigationBar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@color/nav_item_colors"
+            app:itemTextColor="@color/nav_item_colors"
+            app:menu="@menu/nav_items">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>

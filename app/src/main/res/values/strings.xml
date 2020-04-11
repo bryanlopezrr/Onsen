@@ -10,9 +10,8 @@
     <string name="nav_monitor">Monitor</string>
     <string name="nav_meditate">Meditate</string>
     <string name="nav_reminder">Reminder</string>
-    <string name="motion_detected">Motion Detected</string>
-    <string name="no_motion">No Motion Detected</string>
-    <string name="no_audio">No Loud Noises Detected</string>
+    <string name="motion_monitor">Motion Monitor</string>
+    <string name="noise_monitor">Noise Monitor</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
