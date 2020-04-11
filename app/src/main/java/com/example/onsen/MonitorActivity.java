@@ -1,9 +1,13 @@
 package com.example.onsen;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
@@ -20,26 +24,84 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.IOException;
+import java.sql.Time;
 
 import static java.lang.Math.abs;
 
 public class MonitorActivity extends AppCompatActivity {
     //https://www.youtube.com/watch?v=8Veyw4e1MX0
+    //https://stackoverflow.com/questions/14181449/android-detect-sound-level
 
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroscopeEventListener;
+    private MediaRecorder recorder = null;
     float motionsDetected = 0;
     float motionsToParse = 0;
+    float noiseLevel = 0;
+
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private boolean permissionToRecordAccepted = false;
+    //From android studio developers guide
+    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+
+    //audio functions from stackoverflow and developers handbook
+    public void startRecording() {
+        if (recorder == null){
+            recorder = new MediaRecorder();
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            recorder.setOutputFile("/dev/null"); //saves to nowhere
+            try {
+                recorder.prepare();
+            } catch (IOException e){
+                Toast.makeText(this, "Audio Recording Error", Toast.LENGTH_SHORT);
+                finish();
+            }
+            recorder.start();
+        }
+    }
+
+    public void stopRecording() {
+        if (recorder != null)
+        {
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+        }
+        if (!permissionToRecordAccepted ) finish();
+
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        long startTime = System.currentTimeMillis();
         setContentView(R.layout.activity_monitor);
         final TextView textView = findViewById(R.id.textView2);
-        final ToggleButton toggleButton = findViewById(R.id.toggleButton);
+        final ToggleButton toggleButtonGyro = findViewById(R.id.toggleButton);
+        final ToggleButton toggleButtonAudio = findViewById(R.id.toggleButton2);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
@@ -47,7 +109,8 @@ public class MonitorActivity extends AppCompatActivity {
             Toast.makeText(this, "Error: no gyroscope", Toast.LENGTH_SHORT).show();
             finish();
         }
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        toggleButtonGyro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
@@ -59,6 +122,25 @@ public class MonitorActivity extends AppCompatActivity {
                 }
             }
         });
+
+        toggleButtonAudio.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    if (recorder == null) {
+                        startRecording();
+                        recorder.getMaxAmplitude();
+                    }
+                }
+                else {
+                    noiseLevel = recorder.getMaxAmplitude();
+                    textView.setText(Float.toString(noiseLevel));
+                    stopRecording();
+                }
+            }
+        });
+
+
         gyroscopeEventListener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
@@ -66,7 +148,7 @@ public class MonitorActivity extends AppCompatActivity {
                 if ((abs(event.values[2]) + abs(event.values[1]) + abs(event.values[0]) / 3) > 0.7f) {
                     motionsDetected++;
                 }
-                textView.setText(Float.toString(motionsDetected));
+                //textView.setText(Float.toString(noiseLevel));
 
             }
 
