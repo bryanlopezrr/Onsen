@@ -65,7 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
 
             user.put("name", tName.getText().toString().trim());
 
-
             user.signUpInBackground(new SignUpCallback() {
                 @Override
                 public void done(ParseException e) {
