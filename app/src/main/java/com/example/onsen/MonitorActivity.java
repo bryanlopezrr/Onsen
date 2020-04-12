@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.sql.Time;
 
 import static java.lang.Math.abs;
+import static java.lang.Math.log10;
 
 public class MonitorActivity extends AppCompatActivity {
     //https://www.youtube.com/watch?v=8Veyw4e1MX0
@@ -46,6 +47,8 @@ public class MonitorActivity extends AppCompatActivity {
     float motionsDetected = 0;
     float motionsToParse = 0;
     float noiseLevel = 0;
+    double noiseInDecibels = 0;
+    double noiseToParse = 0;
 
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private boolean permissionToRecordAccepted = false;
@@ -119,8 +122,8 @@ public class MonitorActivity extends AppCompatActivity {
                     motionsDetected = 0;
                 }
                 else {
-                    motionsToParse = motionsDetected;
                     ParseObject MotionData = new ParseObject("MotionData");
+                    motionsToParse = motionsDetected;
                     MotionData.put("userID", ParseUser.getCurrentUser().getObjectId());
                     MotionData.put("Motions", motionsToParse);
                     MotionData.saveInBackground();
@@ -139,9 +142,16 @@ public class MonitorActivity extends AppCompatActivity {
                     }
                 }
                 else {
+                    ParseObject NoiseData = new ParseObject("NoiseData");
                     noiseLevel = recorder.getMaxAmplitude();
-                    textView.setText(Float.toString(noiseLevel));
                     stopRecording();
+                    //decibel conversion formula from https://stackoverflow.com/questions/32419602/get-more-range-in-decibel-values-from-androidrecoreder-maxamplitude
+                    noiseInDecibels = 20 * log10(noiseLevel/32367.0);
+                    noiseToParse = noiseInDecibels;
+                    NoiseData.put("userID", ParseUser.getCurrentUser().getObjectId());
+                    NoiseData.put("loudestNoise", noiseToParse);
+                    NoiseData.saveInBackground();
+
                 }
             }
         });
