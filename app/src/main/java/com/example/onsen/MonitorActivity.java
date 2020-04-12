@@ -27,6 +27,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -118,6 +120,10 @@ public class MonitorActivity extends AppCompatActivity {
                 }
                 else {
                     motionsToParse = motionsDetected;
+                    ParseObject MotionData = new ParseObject("MotionData");
+                    MotionData.put("userID", ParseUser.getCurrentUser().getObjectId());
+                    MotionData.put("Motions", motionsToParse);
+                    MotionData.saveInBackground();
                     motionsDetected = 0;
                 }
             }

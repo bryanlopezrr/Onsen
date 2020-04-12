@@ -7,9 +7,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="417dp">
 
-         <!-- COMMENT ON RelativeLayout
+        <!-- COMMENT ON RelativeLayout
             I had to keep this 400dp ^ because it pushes the
             navigation bar outside of the phone pane
          If you make it bigger

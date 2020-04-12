@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -12,13 +13,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class ReportsActivity extends AppCompatActivity {
 
+    //back4app documentation was used
+    String parseKey;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
+
+        final TextView textViewUser = findViewById(R.id.textView3);
+        textViewUser.setText(ParseUser.getCurrentUser().getObjectId());
 
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
         Menu menu = bottomNavBar.getMenu();
