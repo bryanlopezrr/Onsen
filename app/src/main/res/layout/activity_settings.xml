@@ -40,18 +40,20 @@
             android:layout_marginTop="105dp"
             android:background="#BABBB4B4"
             android:text="Profile"
+            android:onClick="profile"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/buttonScreenS"
+            android:id="@+id/buttonHelp"
             android:layout_width="340dp"
             android:layout_height="40dp"
             android:layout_below="@id/buttonProfile"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="#BABBB4B4"
-            android:text="ScreenSaver"
+            android:text="Help"
+            android:onClick="help"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
@@ -59,10 +61,11 @@
             android:id="@+id/buttonInvite"
             android:layout_width="340dp"
             android:layout_height="40dp"
-            android:layout_below="@id/buttonScreenS"
+            android:layout_below="@id/buttonHelp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="#BABBB4B4"
+            android:onClick="inviteFriends"
             android:text="Invite Friends"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
