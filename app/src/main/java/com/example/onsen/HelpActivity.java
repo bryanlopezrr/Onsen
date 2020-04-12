@@ -1,5 +1,6 @@
 package com.example.onsen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,11 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+    }
+
+    public void goHome(View view){
+        Intent intent = new Intent(HelpActivity.this, ReportsActivity.class);
+        startActivity(intent);
     }
 
     public void questionShow(View view){
