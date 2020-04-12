@@ -152,6 +152,14 @@
             android:text="The application has an option in the settings tab. Once the user clicks on this feedback button a function to email feedback@onsen.com will display. Please write anything you would like to see in the app in the future."
             android:textSize="14.5dp" />
 
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/editTextA5"
+            android:layout_marginTop="-5dp"
+            android:src="@drawable/logo"
+            android:onClick="goHome"/>
+
     </RelativeLayout>
 
 
