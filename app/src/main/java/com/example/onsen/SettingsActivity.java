@@ -94,6 +94,11 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, "Choose email service"));
     }
 
+    public void help(View view){
+        Intent intent = new Intent(SettingsActivity.this, HelpActivity.class);
+        startActivity(intent);
+    }
+
 
     public void inviteFriends(View view){
             Intent intent = new Intent(Intent.ACTION_SEND);
