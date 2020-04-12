@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -13,21 +12,76 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.List;
+
+import static java.lang.Math.round;
+
 public class ReportsActivity extends AppCompatActivity {
 
+
     //back4app documentation was used
-    String parseKey;
+    String mdata = "";
+    String ndata = "";
+    Number motion;
+    double noise;
+    Date date;
+    DecimalFormat df = new DecimalFormat("##.##");
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports);
 
-        final TextView textViewUser = findViewById(R.id.textView3);
-        textViewUser.setText(ParseUser.getCurrentUser().getObjectId());
+        final TextView motionData = findViewById(R.id.motionData);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("MotionData");
+        query.whereEqualTo("userID", ParseUser.getCurrentUser().getObjectId());
+        query.orderByDescending("createdAt");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < objects.size(); i++)
+                    {
+                        motion = objects.get(i).getNumber("Motions");
+                        date = objects.get(i).getCreatedAt();
+                        mdata += DateFormat.getDateTimeInstance().format(date) + ": " + motion.toString() + " motions were detected.\n";
+                    }
+                    motionData.setText(mdata);
+                }
+                else {}
+            }
+        });
+
+        final TextView noiseData = findViewById(R.id.noiseData);
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("NoiseData");
+        query2.whereEqualTo("userID", ParseUser.getCurrentUser().getObjectId());
+        query2.orderByDescending("createdAt");
+        query2.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < objects.size(); i++)
+                    {
+                        noise = objects.get(i).getDouble("loudestNoise");
+                        date = objects.get(i).getCreatedAt();
+                        ndata += DateFormat.getDateTimeInstance().format(date) + ": " + df.format(noise) + " decibels was the loudest noise detected.\n";
+                    }
+                    noiseData.setText(ndata);
+                }
+                else {}
+            }
+        });
+
+
 
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
         Menu menu = bottomNavBar.getMenu();

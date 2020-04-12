@@ -127,6 +127,7 @@ public class MonitorActivity extends AppCompatActivity {
                     MotionData.put("userID", ParseUser.getCurrentUser().getObjectId());
                     MotionData.put("Motions", motionsToParse);
                     MotionData.saveInBackground();
+                    Toast.makeText(MonitorActivity.this, "Motion data saved", Toast.LENGTH_SHORT).show();
                     motionsDetected = 0;
                 }
             }
@@ -145,11 +146,12 @@ public class MonitorActivity extends AppCompatActivity {
                     ParseObject NoiseData = new ParseObject("NoiseData");
                     noiseLevel = recorder.getMaxAmplitude();
                     stopRecording();
-                    //decibel conversion formula from https://stackoverflow.com/questions/32419602/get-more-range-in-decibel-values-from-androidrecoreder-maxamplitude
-                    noiseInDecibels = 20 * log10(noiseLevel/32367.0);
+                    //decibel conversion formula modified from https://stackoverflow.com/questions/32419602/get-more-range-in-decibel-values-from-androidrecoreder-maxamplitude
+                    noiseInDecibels = 20 * log10(noiseLevel/2700);
                     noiseToParse = noiseInDecibels;
                     NoiseData.put("userID", ParseUser.getCurrentUser().getObjectId());
                     NoiseData.put("loudestNoise", noiseToParse);
+                    Toast.makeText(MonitorActivity.this, "Noise data saved", Toast.LENGTH_SHORT).show();
                     NoiseData.saveInBackground();
 
                 }

@@ -50,9 +50,30 @@
         </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/motionReport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/motion_report" />
+
+        <TextView
+            android:id="@+id/motionData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/motionReport"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/noiseReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/motionData"
+            android:text="@string/noise_report" />
+
+        <TextView
+            android:id="@+id/noiseData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noiseReport"
             android:text="TextView" />
 
 
