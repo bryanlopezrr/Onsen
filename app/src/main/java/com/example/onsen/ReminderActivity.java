@@ -43,7 +43,7 @@ public class ReminderActivity extends AppCompatActivity {
 
         reminderManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         reminderTimePicker = findViewById(R.id.timePickerAlarm);
-        isSet = findViewById(R.id.textViewisSet);
+//        isSet = findViewById(R.id.textViewisSet);
         calendar = Calendar.getInstance();
 
         bottomNavBar.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
@@ -96,10 +96,10 @@ public class ReminderActivity extends AppCompatActivity {
 
         String sHour = String.valueOf(hour);
         String sMinute = String.valueOf(minute);
-
-        isReminderSet("YEEEET" + sHour
-        + " " + sMinute);
-
+//
+//        isReminderSet("YEEEET" + sHour
+//        + " " + sMinute);
+//
 
         Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
         intent.putExtra("extrat", "reminder on");
@@ -111,7 +111,7 @@ public class ReminderActivity extends AppCompatActivity {
     }
 
     public void turnOff(View view){
-        isReminderSet("NOPEEEEEE");
+//        isReminderSet("NOPEEEEEE");
 
         Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
 
@@ -122,8 +122,8 @@ public class ReminderActivity extends AppCompatActivity {
 
     }
 
-    private void isReminderSet(String isOn){
-        isSet.setText(isOn);
-    }
+//    private void isReminderSet(String isOn){
+//        isSet.setText(isOn);
+//    }
 
 }
