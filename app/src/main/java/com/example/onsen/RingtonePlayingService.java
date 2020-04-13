@@ -22,23 +22,23 @@ public class RingtonePlayingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId ){
 
-        Log.e("ERROR", "In the servbice java start command!!!!!!!!!!:)");
+//        Log.e("ERROR", "In the service java start command!!!!!!!!!!:)");
 
         String state = intent.getExtras().getString("extra");
+
+        Log.e("STATUS", state);
 
         assert state != null;
         if(state.equals("reminder on")){
             flag = true;
+            mediaSong = MediaPlayer.create(this, R.raw.remindme);
+            mediaSong.start();
         }
         else if(state.equals("reminder off")){
             flag = false;
         }else{
             flag = false;
         }
-
-
-        mediaSong = MediaPlayer.create(this, R.raw.remindme);
-        mediaSong.start();
 
         return START_NOT_STICKY;
     }

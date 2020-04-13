@@ -5,10 +5,12 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.media.TimedText;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,6 +39,22 @@ public class ReminderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
 
+        final Button turnOffButton = findViewById(R.id.buttonTurnOff);
+        turnOffButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turnOff();
+            }
+        });
+
+        Button setButton = findViewById(R.id.buttonSet);
+        setButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setReminder();
+            }
+        });
+
         BottomNavigationView bottomNavBar = findViewById(R.id.navigationBar);
         Menu menu = bottomNavBar.getMenu();
         MenuItem menuItem = menu.getItem(3);
@@ -43,7 +62,6 @@ public class ReminderActivity extends AppCompatActivity {
 
         reminderManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         reminderTimePicker = findViewById(R.id.timePickerAlarm);
-        isSet = findViewById(R.id.textViewisSet);
         calendar = Calendar.getInstance();
 
         bottomNavBar.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
@@ -86,7 +104,8 @@ public class ReminderActivity extends AppCompatActivity {
 
     }
 
-    public void setReminder(View view){
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void setReminder(){
 
         calendar.set(Calendar.HOUR_OF_DAY, reminderTimePicker.getHour());
         calendar.set(Calendar.MINUTE, reminderTimePicker.getMinute());
@@ -97,33 +116,28 @@ public class ReminderActivity extends AppCompatActivity {
         String sHour = String.valueOf(hour);
         String sMinute = String.valueOf(minute);
 
-        isReminderSet("YEEEET" + sHour
-        + " " + sMinute);
-
+        Toast.makeText(ReminderActivity.this, "Reminder set to " + sHour + ":" + sMinute, Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
-        intent.putExtra("extrat", "reminder on");
+        intent.putExtra("extra", "reminder on");
 
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),  0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        reminderManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+//        reminderManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        reminderManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 0, pendingIntent);
 
     }
 
-    public void turnOff(View view){
-        isReminderSet("NOPEEEEEE");
+    public void turnOff(){
 
+        Toast.makeText(ReminderActivity.this, "Reminder OFF", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
-
         intent.putExtra("extra", "reminder off");
+
         reminderManager.cancel(pendingIntent);
 
         sendBroadcast(intent);
 
-    }
-
-    private void isReminderSet(String isOn){
-        isSet.setText(isOn);
     }
 
 }
