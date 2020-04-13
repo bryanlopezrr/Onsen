@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.media.TimedText;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -86,6 +88,7 @@ public class ReminderActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void setReminder(View view){
 
         calendar.set(Calendar.HOUR_OF_DAY, reminderTimePicker.getHour());
@@ -102,11 +105,11 @@ public class ReminderActivity extends AppCompatActivity {
 //
 
         Intent intent = new Intent(getApplicationContext(), ReminderLogic.class);
-        intent.putExtra("extrat", "reminder on");
+        intent.putExtra("extra", "reminder on");
 
         pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),  0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        reminderManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        reminderManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 0, pendingIntent);
 
     }
 

@@ -22,7 +22,7 @@ public class RingtonePlayingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId ){
 
-        Log.e("ERROR", "In the servbice java start command!!!!!!!!!!:)");
+//        Log.e("ERROR", "In the servbice java start command!!!!!!!!!!:)");
 
         String state = intent.getExtras().getString("extra");
 
@@ -37,8 +37,12 @@ public class RingtonePlayingService extends Service {
         }
 
 
-        mediaSong = MediaPlayer.create(this, R.raw.remindme);
-        mediaSong.start();
+        if(flag == true ){
+
+            mediaSong = MediaPlayer.create(this, R.raw.remindme);
+            mediaSong.start();
+        }
+
 
         return START_NOT_STICKY;
     }
