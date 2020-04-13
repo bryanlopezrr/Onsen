@@ -43,7 +43,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Name of User"
+            android:text="Name of User: Bob Jones"
             android:textSize="20dp"/>
 
         <TextView
@@ -56,7 +56,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Email of User"
+            android:text="Email of User: bob@mail.com"
             android:textSize="20dp"/>
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:text="Member Since"
+            android:text="Member Since: 02/10/2020"
             android:textSize="20dp"/>
 
         <ImageView
