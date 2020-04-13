@@ -22,6 +22,7 @@ public class RingtonePlayingService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId ){
 
+<<<<<<< HEAD
         Log.e("ERROR", "In the servbice java start command!!!!!!!!!!:)");
 
         String state = intent.getExtras().getString("extra");
@@ -29,6 +30,19 @@ public class RingtonePlayingService extends Service {
         assert state != null;
         if(state.equals("reminder on")){
             flag = true;
+=======
+//        Log.e("ERROR", "In the service java start command!!!!!!!!!!:)");
+
+        String state = intent.getExtras().getString("extra");
+
+        Log.e("STATUS", state);
+
+        assert state != null;
+        if(state.equals("reminder on")){
+            flag = true;
+            mediaSong = MediaPlayer.create(this, R.raw.remindme);
+            mediaSong.start();
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
         }
         else if(state.equals("reminder off")){
             flag = false;
@@ -36,10 +50,13 @@ public class RingtonePlayingService extends Service {
             flag = false;
         }
 
+<<<<<<< HEAD
 
         mediaSong = MediaPlayer.create(this, R.raw.remindme);
         mediaSong.start();
 
+=======
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
         return START_NOT_STICKY;
     }
 

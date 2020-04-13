@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.onsen">
 
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+=======
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 
     <application
         android:name=".App"
@@ -14,6 +20,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
+<<<<<<< HEAD
         <activity android:name=".Side"></activity>
         <activity android:name=".Shoulder" />
         <activity android:name=".Lord" />
@@ -32,6 +39,8 @@
         <activity android:name=".Downward" />
         <activity android:name=".Mountain" />
         <activity android:name=".Beginners" />
+=======
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +59,7 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
 
+<<<<<<< HEAD
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ReminderActivity" />
         <activity android:name=".MonitorActivity" />
@@ -66,4 +76,24 @@
             android:enabled="true" />
     </application>
 
+=======
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".ReminderActivity"/>
+        <activity android:name=".MonitorActivity"/>
+        <activity android:name=".MeditateActivity"/>
+        <activity android:name=".ReportsActivity"/>
+        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".HelpActivity"/>
+
+        <receiver android:name=".ReminderLogic"/>
+        <service android:name=".RingtonePlayingService"
+            android:enabled="true">
+        </service>
+
+    </application>
+
+
+
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 </manifest>

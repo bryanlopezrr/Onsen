@@ -61,6 +61,7 @@ public class MeditateActivity extends AppCompatActivity {
         });
     }
 
+<<<<<<< HEAD
     public void onButtonClick1(View v){
         Intent myIntent = new Intent(getBaseContext(),   Beginners.class);
         startActivity(myIntent);
@@ -76,4 +77,6 @@ public class MeditateActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
+=======
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 }

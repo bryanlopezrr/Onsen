@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+<<<<<<< HEAD
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
@@ -24,6 +25,8 @@ android {
         abortOnError false
     }
 
+=======
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 }
 
 dependencies {

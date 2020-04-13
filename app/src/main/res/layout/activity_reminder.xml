@@ -72,7 +72,11 @@
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
             android:text="Set"
+<<<<<<< HEAD
             android:onClick="setReminder"/>
+=======
+            />
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 
         <Button
             android:id="@+id/buttonTurnOff"
@@ -91,8 +95,13 @@
             android:background="@color/colorAccent"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
+<<<<<<< HEAD
             android:text="TurnOff"
             android:onClick="turnOff"/>
+=======
+            android:text="Turn Off"
+            />
+>>>>>>> 9227de382abab1257588524ea55a1c6af4b454c8
 
 
     </RelativeLayout>
